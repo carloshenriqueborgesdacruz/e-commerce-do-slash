@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MercadoMix - Sua loja online com produtos incríveis, compra acessível e segura.">
+    <title>MercadoMix - Sua loja online acessível</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
+    <header class="header">
+        <div class="top-header">
+            <a href="#" class="logo" onclick="showPage('home')" aria-label="MercadoMix - Página inicial">
+                Mercado<span>Mix</span>
+            </a>
+
+            <form class="search-box" role="search" onsubmit="event.preventDefault(); searchProducts();">
+                <label for="searchInput" class="sr-only">Buscar produtos</label>
+                <input type="search" id="searchInput" placeholder="O que você está procurando?" aria-label="Pesquisar produtos">
+                <button type="submit" aria-label="Pesquisar">🔎</button>
+            </form>
+
+            <div class="header-actions">
+                <button class="header-button" onclick="showPage('login')" aria-label="Abrir página de login">
+                    <span aria-hidden="true">👤</span>
+                    <span>Olá!<br><strong id="userNavText">Entrar</strong></span>
+                </button>
+
+                <button class="cart-button" onclick="showPage('cart')" aria-label="Abrir carrinho de compras">
+                    <span aria-hidden="true">🛒</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                    <span>Carrinho</span>
+                </button>
+            </div>
+        </div>
+
+        <nav class="navbar" aria-label="Categorias de produtos">
+            <button onclick="filterCategory('Todos')">Todas as categorias</button>
+            <button onclick="filterCategory('Eletrônicos')">Eletrônicos</button>
+            <button onclick="filterCategory('Casa')">Casa</button>
+            <button onclick="filterCategory('Moda')">Moda</button>
+            <button onclick="filterCategory('Esportes')">Esportes</button>
+            <button onclick="filterCategory('Beleza')">Beleza</button>
+            <button onclick="filterCategory('Informática')">Informática</button>
+        </nav>
+    </header>
+
+    <main id="conteudo" tabindex="-1">
+
+        <section id="homePage" class="page">
+            <section class="hero" aria-label="Banner de Ofertas">
+                <div class="hero-content">
+                    <p class="offer-tag">OFERTAS ESPECIAIS</p>
+                    <h1>Tecnologia, casa e muito mais</h1>
+                    <p>Encontre 20 produtos incríveis com acessibilidade e ótimos preços.</p>
+                    <button class="primary-button" onclick="scrollToProducts()">Ver Produtos</button>
+                </div>
+                <div class="hero-image" aria-hidden="true">🛍️</div>
+            </section>
+
+            <section class="products-section" id="produtos">
+                <div class="section-title">
+                    <div>
+                        <h2>Nossos Produtos</h2>
+                        <p id="productResultText" aria-live="polite">Carregando catálogo...</p>
+                    </div>
+                    <div>
+                        <label for="sortProducts" class="sr-only">Ordenar produtos</label>
+                        <select id="sortProducts" onchange="sortProducts()">
+                            <option value="default">Mais relevantes</option>
+                            <option value="lowest">Menor preço</option>
+                            <option value="highest">Maior preço</option>
+                            <option value="name">Nome (A-Z)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="productGrid" class="product-grid" aria-live="polite"></div>
+            </section>
+        </section>
+
+        <section id="loginPage" class="page hidden">
+            <div class="form-container">
+                <button class="back-button" onclick="showPage('home')">← Voltar para a loja</button>
+                <div class="form-card">
+                    <div class="form-icon" aria-hidden="true">👤</div>
+                    <h1>Entrar na sua conta</h1>
+                    <p>Acesse com suas credenciais abaixo.</p>
+
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="loginEmail">E-mail</label>
+                            <input type="email" id="loginEmail" required autocomplete="email" placeholder="seu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Senha</label>
+                            <input type="password" id="loginPassword" required minlength="6" autocomplete="current-password" placeholder="Digite sua senha">
+                        </div>
+
+                        <button type="submit" class="primary-button full-button">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="cartPage" class="page hidden">
+            <div class="container">
+                <button class="back-button" onclick="showPage('home')">← Continuar comprando</button>
+                <h1>Meu Carrinho</h1>
+
+                <div class="cart-layout">
+                    <div id="cartItems" class="cart-items" aria-live="polite"></div>
+
+                    <div class="summary-card">
+                        <h2>Resumo da Compra</h2>
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <span id="cartSubtotal">R$ 0,00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Frete</span>
+                            <span id="cartShipping">Grátis</span>
+                        </div>
+                        <hr>
+                        <div class="summary-total">
+                            <strong>Total</strong>
+                            <strong id="cartTotal">R$ 0,00</strong>
+                        </div>
+                        <button class="primary-button full-button" onclick="showPage('checkout')">Finalizar Compra</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="checkoutPage" class="page hidden">
+            <div class="container">
+                <button class="back-button" onclick="showPage('cart')">← Voltar ao carrinho</button>
+                <h1>Finalizar Compra</h1>
+
+                <div class="checkout-layout">
+                    <form class="checkout-form" onsubmit="processOrder(event)">
+                        <fieldset>
+                            <legend>1. Dados Pessoais e Entrega</legend>
+                            <div class="form-group">
+                                <label for="checkoutName">Nome completo</label>
+                                <input type="text" id="checkoutName" required autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="checkoutEmail">E-mail para confirmação</label>
+                                <input type="email" id="checkoutEmail" required autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="checkoutAddress">Endereço de Entrega</label>
+                                <input type="text" id="checkoutAddress" required placeholder="Rua, Número, Bairro, Cidade">
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>2. Pagamento</legend>
+                            <div class="form-group">
+                                <label for="paymentMethod">Selecione a Forma de Pagamento</label>
+                                <select id="paymentMethod" required>
+                                    <option value="pix">PIX (Aprovação Instantânea)</option>
+                                    <option value="card">Cartão de Crédito</option>
+                                    <option value="boleto">Boleto Bancário</option>
+                                </select>
+                            </div>
+                        </fieldset>
+
+                        <button type="submit" class="primary-button full-button">Confirmar e Pagar</button>
+                    </form>
+
+                    <div class="summary-card">
+                        <h2>Itens do Pedido</h2>
+                        <div id="checkoutSummaryList"></div>
+                        <hr>
+                        <div class="summary-total">
+                            <strong>Total Final</strong>
+                            <strong id="checkoutTotal">R$ 0,00</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="successPage" class="page hidden">
+            <div class="container text-center">
+                <div class="success-icon" aria-hidden="true">✓</div>
+                <h1>Pedido Realizado com Sucesso!</h1>
+                <p>Obrigado pela sua compra no MercadoMix.</p>
+                <p>Número do pedido: <strong id="orderNumber">#00000</strong></p>
+                <button class="primary-button" onclick="showPage('home')">Voltar para a página inicial</button>
+            </div>
+        </section>
+
+    </main>
+
+    <dialog id="productModal" class="product-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()" aria-label="Fechar detalhes do produto">✕</button>
+            <div id="modalBody"></div>
+        </div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h2>MercadoMix</h2>
+                <p>Sua loja online acessível e de confiança.</p>
+            </div>
+            <div>
+                <h3>Atendimento</h3>
+                <p>contato@mercadomix.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 MercadoMix - Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script src="conteudo.js"></script>
+</body>
+</html>
