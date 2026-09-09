@@ -27,11 +27,65 @@ const products = [
 
 let cart = JSON.parse(localStorage.getItem("mercadoMixCart")) || [];
 let currentProducts = [...products];
+let lastFocusedElement = null;
+let fontScale = Number(localStorage.getItem("mercadoMixFontScale")) || 1;
+
+function announce(message) {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
+    toast.textContent = message;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
     updateCart();
+    setupAccessibility();
 });
+
+function setupAccessibility() {
+    const body = document.body;
+    const toggle = document.getElementById("accessibilityToggle");
+    const options = document.getElementById("accessibilityOptions");
+    const increase = document.getElementById("increaseFont");
+    const decrease = document.getElementById("decreaseFont");
+    const contrast = document.getElementById("highContrast");
+    const dark = document.getElementById("darkMode");
+    const reset = document.getElementById("resetAccessibility");
+
+    const applyFontScale = () => {
+        document.documentElement.style.fontSize = `${fontScale * 100}%`;
+        localStorage.setItem("mercadoMixFontScale", fontScale);
+    };
+    applyFontScale();
+
+    const highContrast = localStorage.getItem("mercadoMixHighContrast") === "true";
+    const darkMode = localStorage.getItem("mercadoMixDarkMode") === "true";
+    body.classList.toggle("high-contrast", highContrast);
+    body.classList.toggle("dark-mode", darkMode);
+    contrast.setAttribute("aria-pressed", highContrast);
+    dark.setAttribute("aria-pressed", darkMode);
+
+    toggle.addEventListener("click", () => {
+        const open = options.hidden;
+        options.hidden = !open;
+        toggle.setAttribute("aria-expanded", open);
+    });
+    increase.addEventListener("click", () => { fontScale = Math.min(1.3, +(fontScale + 0.1).toFixed(1)); applyFontScale(); announce("Texto aumentado"); });
+    decrease.addEventListener("click", () => { fontScale = Math.max(0.9, +(fontScale - 0.1).toFixed(1)); applyFontScale(); announce("Texto diminuído"); });
+    contrast.addEventListener("click", () => {
+        const enabled = !body.classList.contains("high-contrast");
+        body.classList.toggle("high-contrast", enabled); contrast.setAttribute("aria-pressed", enabled); localStorage.setItem("mercadoMixHighContrast", enabled);
+    });
+    dark.addEventListener("click", () => {
+        const enabled = !body.classList.contains("dark-mode");
+        body.classList.toggle("dark-mode", enabled); dark.setAttribute("aria-pressed", enabled); localStorage.setItem("mercadoMixDarkMode", enabled);
+    });
+    reset.addEventListener("click", () => {
+        fontScale = 1; applyFontScale(); body.classList.remove("high-contrast", "dark-mode");
+        localStorage.removeItem("mercadoMixHighContrast"); localStorage.removeItem("mercadoMixDarkMode");
+        contrast.setAttribute("aria-pressed", "false"); dark.setAttribute("aria-pressed", "false"); announce("Configurações restauradas");
+    });
+}
 
 /* --- NAVEGAÇÃO ENTRE PÁGINAS --- */
 function showPage(pageName) {
@@ -84,13 +138,14 @@ function renderProducts(list = currentProducts) {
 
 /* --- RESUMO DO PRODUTO (MODAL ACESSÍVEL) --- */
 function openModal(id) {
+    lastFocusedElement = document.activeElement;
     const product = products.find(p => p.id === id);
     if (!product) return;
 
     const modalBody = document.getElementById("modalBody");
     modalBody.innerHTML = `
         <div style="text-align:center; font-size:4rem;" aria-hidden="true">${product.icon}</div>
-        <h2>${product.name}</h2>
+        <h2 id="modalTitle">${product.name}</h2>
         <p><strong>Categoria:</strong> ${product.category}</p>
         <p><strong>Avaliação:</strong> ⭐ ${product.rating} / 5.0</p>
         <p><strong>Descrição:</strong> ${product.description}</p>
@@ -101,12 +156,15 @@ function openModal(id) {
     const modal = document.getElementById("productModal");
     if (modal && modal.showModal) {
         modal.showModal();
+        const closeButton = modal.querySelector(".close-modal");
+        if (closeButton) closeButton.focus();
     }
 }
 
 function closeModal() {
     const modal = document.getElementById("productModal");
-    if (modal && modal.close) modal.close();
+    if (modal && modal.open) modal.close();
+    if (lastFocusedElement && document.contains(lastFocusedElement)) lastFocusedElement.focus();
 }
 
 /* --- FILTROS E BUSCA --- */

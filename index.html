@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <aside class="accessibility-panel" aria-label="Ferramentas de acessibilidade">
+        <button type="button" id="accessibilityToggle" class="accessibility-toggle" aria-expanded="false" aria-controls="accessibilityOptions">
+            Acessibilidade
+        </button>
+        <div id="accessibilityOptions" class="accessibility-options" hidden>
+            <p class="accessibility-title">Acessibilidade</p>
+            <button type="button" id="increaseFont">Aumentar texto</button>
+            <button type="button" id="decreaseFont">Diminuir texto</button>
+            <button type="button" id="highContrast" aria-pressed="false">Alto contraste</button>
+            <button type="button" id="darkMode" aria-pressed="false">Modo escuro</button>
+            <button type="button" id="resetAccessibility">Restaurar padrão</button>
+        </div>
+    </aside>
 
     <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
@@ -199,7 +212,7 @@
 
     </main>
 
-    <dialog id="productModal" class="product-modal">
+    <dialog id="productModal" class="product-modal" aria-labelledby="modalTitle">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal()" aria-label="Fechar detalhes do produto">✕</button>
             <div id="modalBody"></div>
@@ -223,6 +236,20 @@
             © 2026 MercadoMix - Todos os direitos reservados.
         </div>
     </footer>
+
+
+    <!-- Widget de acessibilidade VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
     <script src="conteudo.js"></script>
 </body>
