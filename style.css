@@ -1,3 +1,6 @@
+/* =========================
+   RESET E ACESSIBILIDADE
+========================= */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -41,7 +44,9 @@ body {
     top: 10px;
 }
 
-
+/* =========================
+   HEADER & NAV
+========================= */
 .header {
     background: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -116,7 +121,9 @@ body {
     font-weight: bold;
 }
 
-
+/* =========================
+   ESTRUTURA E PÁGINAS
+========================= */
 .page { max-width: 1400px; margin: auto; padding: 25px; }
 .hidden { display: none !important; }
 
@@ -130,7 +137,9 @@ body {
     align-items: center;
 }
 
-
+/* =========================
+   GRID DE PRODUTOS E CARDS
+========================= */
 .section-title {
     display: flex;
     justify-content: space-between;
@@ -173,7 +182,9 @@ body {
 }
 .full-button { width: 100%; }
 
-
+/* =========================
+   CARRINHO E CHECKOUT
+========================= */
 .cart-layout, .checkout-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -206,7 +217,7 @@ body {
     margin: 10px 0;
 }
 
-
+/* Formulários & Modais */
 .form-container { max-width: 400px; margin: auto; }
 .form-card { background: white; padding: 25px; border-radius: 8px; }
 .form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
@@ -236,7 +247,9 @@ body {
 }
 .toast.show { display: block; }
 
-
+/* =========================
+   PAINEL DE ACESSIBILIDADE
+========================= */
 .accessibility-panel { position: fixed; left: 16px; bottom: 16px; z-index: 1000; }
 .accessibility-toggle, .accessibility-options button { font: inherit; cursor: pointer; }
 .accessibility-toggle { background: #005fcc; color: #fff; border: 2px solid #003b80; border-radius: 8px; padding: 10px 14px; font-weight: bold; }
@@ -255,3 +268,63 @@ body {
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
 @media (max-width: 600px) { .accessibility-panel { left: 10px; bottom: 10px; } }
+
+/* =========================
+   IMAGENS REAIS DOS PRODUTOS
+========================= */
+.product-image {
+    width: 100%;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.modal-product-image {
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0 18px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+.modal-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.cart-item {
+    gap: 15px;
+}
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    flex: 0 0 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+}
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.cart-item-title {
+    flex: 1;
+}
+@media (max-width: 600px) {
+    .product-image { height: 160px; }
+    .modal-product-image { height: 220px; }
+    .cart-item-image { width: 60px; height: 60px; flex-basis: 60px; }
+}

@@ -3,26 +3,26 @@
 ================================================== */
 
 const products = [
-    { id: 1, name: "Smartphone Galaxy Pro 256GB", category: "Eletrônicos", price: 2499.90, icon: "📱", rating: 4.8, description: "Smartphone de alta performance com câmera tripla e tela OLED." },
-    { id: 2, name: "Fone Bluetooth Noise Cancelling", category: "Eletrônicos", price: 299.90, icon: "🎧", rating: 4.7, description: "Cancelamento de ruído ativo com até 30 horas de bateria." },
-    { id: 3, name: "Smart TV LED 50 Polegadas", category: "Eletrônicos", price: 2399.90, icon: "📺", rating: 4.6, description: "Resolução 4K Ultra HD com suporte a comandos de voz acessíveis." },
-    { id: 4, name: "Smartwatch Fitness Pro", category: "Eletrônicos", price: 349.90, icon: "⌚", rating: 4.5, description: "Monitoramento de batimentos cardíacos, passos e sono." },
-    { id: 5, name: "Caixa de Som Bluetooth", category: "Eletrônicos", price: 199.90, icon: "🔊", rating: 4.4, description: "Resistente à água com graves profundos e bateria duradoura." },
-    { id: 6, name: "Liquidificador Turbo 1200W", category: "Casa", price: 179.90, icon: "🥤", rating: 4.6, description: "Jarra de vidro ultra resistente com 12 velocidades." },
-    { id: 7, name: "Air Fryer Digital 5L", category: "Casa", price: 399.90, icon: "🍟", rating: 4.8, description: "Fritadeira sem óleo com painel digital intuitivo." },
-    { id: 8, name: "Cafeteira Elétrica Premium", category: "Casa", price: 249.90, icon: "☕", rating: 4.5, description: "Prepara café quentinho em minutos com sistema corta-pingos." },
-    { id: 9, name: "Aspirador de Pó Vertical", category: "Casa", price: 329.90, icon: "🧹", rating: 4.4, description: "2 em 1: pode ser usado como aspirador portátil ou vertical." },
-    { id: 10, name: "Kit Jogo de Cama Casal", category: "Casa", price: 129.90, icon: "🛏️", rating: 4.7, description: "Tecido 100% algodão super macio e hipoalergênico." },
-    { id: 11, name: "Tênis Esportivo Masculino", category: "Moda", price: 249.90, icon: "👟", rating: 4.6, description: "Amortecimento de alta resposta para caminhadas e corridas." },
-    { id: 12, name: "Bicicleta Urbana Aro 29", category: "Esportes", price: 1199.90, icon: "🚲", rating: 4.8, description: "Quadro leve em alumínio com freios a disco eficientes." },
-    { id: 13, name: "Camisa Esportiva Dry Fit", category: "Moda", price: 89.90, icon: "👕", rating: 4.5, description: "Tecido respirável que ajuda na evaporação rápida do suor." },
-    { id: 14, name: "Mochila Esportiva 30L", category: "Esportes", price: 149.90, icon: "🎒", rating: 4.4, description: "Divisória para notebook e compartimentos impermeáveis." },
-    { id: 15, name: "Perfume Feminino Premium", category: "Beleza", price: 199.90, icon: "🌸", rating: 4.8, description: "Fragrância floral marcante com longa fixação." },
-    { id: 16, name: "Kit Cuidados para Cabelo", category: "Beleza", price: 119.90, icon: "💇", rating: 4.6, description: "Shampoo e condicionador para hidratação profunda." },
-    { id: 17, name: "Notebook Ultra 15", category: "Informática", price: 3299.90, icon: "💻", rating: 4.8, description: "Processador de última geração com 16GB RAM e SSD 512GB." },
-    { id: 18, name: "Teclado Mecânico RGB", category: "Informática", price: 229.90, icon: "⌨️", rating: 4.7, description: "Switches macios, ideal para digitação longa ou jogos." },
-    { id: 19, name: "Mouse Gamer RGB", category: "Informática", price: 119.90, icon: "🖱️", rating: 4.6, description: "Sensor óptico de alta precisão com botões configuráveis." },
-    { id: 20, name: "Monitor Full HD 24 Polegadas", category: "Informática", price: 799.90, icon: "🖥️", rating: 4.7, description: "Painel IPS com tratamento anti-reflexo e bordas finas." }
+    { id: 1, name: "Smartphone Galaxy Pro 256GB", category: "Eletrônicos", price: 2499.90, icon: "📱", image: "https://a-static.mlcdn.com.br/280x210/smartphone-samsung-galaxy-a26-5g-256gb/negociunoficial/12595/f1a5cad1aca92e75d19a93cd2063d968.jpg", rating: 4.8, description: "Smartphone de alta performance com câmera tripla e tela OLED." },
+    { id: 2, name: "Fone Bluetooth Noise Cancelling", category: "Eletrônicos", price: 299.90, icon: "🎧", image: "https://waaw.com.br/cdn/shop/products/SENSE300HBNC-7899831310135-13.png?v=1763725933&width=3000", rating: 4.7, description: "Cancelamento de ruído ativo com até 30 horas de bateria." },
+    { id: 3, name: "Smart TV LED 50 Polegadas", category: "Eletrônicos", price: 2399.90, icon: "📺", image: "https://m.media-amazon.com/images/I/61oybFahwGL.jpg", rating: 4.6, description: "Resolução 4K Ultra HD com suporte a comandos de voz acessíveis." },
+    { id: 4, name: "Smartwatch Fitness Pro", category: "Eletrônicos", price: 349.90, icon: "⌚", image: "https://a-static.mlcdn.com.br/280x210/smartwatch-inteligente-watch-28-pro-preto-fitness-frequencia-notificacao-de-redes-sociais-microwear/realltree/smch498/1b82579fa72f005405b4488ad87efc3a.jpeg", rating: 4.5, description: "Monitoramento de batimentos cardíacos, passos e sono." },
+    { id: 5, name: "Caixa de Som Bluetooth", category: "Eletrônicos", price: 199.90, icon: "🔊", image: "https://i.zst.com.br/thumbs/51/17/36/-1556225643.jpg", rating: 4.4, description: "Resistente à água com graves profundos e bateria duradoura." },
+    { id: 6, name: "Liquidificador Turbo 1200W", category: "Casa", price: 179.90, icon: "🥤", image: "https://m.media-amazon.com/images/I/41lb8REH4eL.jpg", rating: 4.6, description: "Jarra de vidro ultra resistente com 12 velocidades." },
+    { id: 7, name: "Air Fryer Digital 5L", category: "Casa", price: 399.90, icon: "🍟", image: "https://http2.mlstatic.com/D_NQ_NP_851560-MLB90673858925_082025-O.webp", rating: 4.8, description: "Fritadeira sem óleo com painel digital intuitivo." },
+    { id: 8, name: "Cafeteira Elétrica Premium", category: "Casa", price: 249.90, icon: "☕", image: "https://imgs.extra.com.br/1561737584/1xg.jpg", rating: 4.5, description: "Prepara café quentinho em minutos com sistema corta-pingos." },
+    { id: 9, name: "Aspirador de Pó Vertical", category: "Casa", price: 329.90, icon: "🧹", image: "https://a-static.mlcdn.com.br/280x210/aspirador-de-po-vertical-com-fio-electrolux-1450w-2-em-1-filtro-hepa-branco-stk14b/electrolux/310118542/2323b103bd45183f2896aea0194f3233.jpeg", rating: 4.4, description: "2 em 1: pode ser usado como aspirador portátil ou vertical." },
+    { id: 10, name: "Kit Jogo de Cama Casal", category: "Casa", price: 129.90, icon: "🛏️", image: "https://images-na.ssl-images-amazon.com/images/I/61rwzSPOJzL.jpg", rating: 4.7, description: "Tecido 100% algodão super macio e hipoalergênico." },
+    { id: 11, name: "Tênis Esportivo Masculino", category: "Moda", price: 249.90, icon: "👟", image: "https://imgs.tcdn.com.br/img/img_prod/1417260/180_tenis_esp_adm_mizuno_cool_ride_3_101095095_32377_451503_1_20260128130648_b061a84a64ff.jpg", rating: 4.6, description: "Amortecimento de alta resposta para caminhadas e corridas." },
+    { id: 12, name: "Bicicleta Urbana Aro 29", category: "Esportes", price: 1199.90, icon: "🚲", image: "https://cdn.awsli.com.br/600x450/209/209769/produto/233993229/cats-ugzde6j39s.jpg", rating: 4.8, description: "Quadro leve em alumínio com freios a disco eficientes." },
+    { id: 13, name: "Camisa Esportiva Dry Fit", category: "Moda", price: 89.90, icon: "👕", image: "https://http2.mlstatic.com/D_NQ_NP_901834-MLB84125614263_042025-O.webp", rating: 4.5, description: "Tecido respirável que ajuda na evaporação rápida do suor." },
+    { id: 14, name: "Mochila Esportiva 30L", category: "Esportes", price: 149.90, icon: "🎒", image: "https://images.tcdn.com.br/img/img_prod/1180965/mochila_a_prova_d_agua_30l_para_viagem_trekking_escalada_caminhada_acampamento_esportiva_197863013_1_637a8761309e348b8c05132c00a48204.jpeg", rating: 4.4, description: "Divisória para notebook e compartimentos impermeáveis." },
+    { id: 15, name: "Perfume Feminino Premium", category: "Beleza", price: 199.90, icon: "🌸", image: "https://fimgs.net/mdimg/perfume-thumbs/375x500.97986.jpg", rating: 4.8, description: "Fragrância floral marcante com longa fixação." },
+    { id: 16, name: "Kit Cuidados para Cabelo", category: "Beleza", price: 119.90, icon: "💇", image: "https://a-static.mlcdn.com.br/280x210/kit-para-cabelo-com-4-unidades-desmaia-cabelo-forever-liss/kactospapelaria/2d16688a535411eeb7ff4201ac185056/65cbcb3070fb72b3b0f7a5c5d57c6fb8.jpeg", rating: 4.6, description: "Shampoo e condicionador para hidratação profunda." },
+    { id: 17, name: "Notebook Ultra 15", category: "Informática", price: 3299.90, icon: "💻", image: "https://http2.mlstatic.com/D_Q_NP_2X_971996-MLA99584761368_122025-P.webp", rating: 4.8, description: "Processador de última geração com 16GB RAM e SSD 512GB." },
+    { id: 18, name: "Teclado Mecânico RGB", category: "Informática", price: 229.90, icon: "⌨️", image: "https://m.media-amazon.com/images/I/711DIjyNFiL.jpg", rating: 4.7, description: "Switches macios, ideal para digitação longa ou jogos." },
+    { id: 19, name: "Mouse Gamer RGB", category: "Informática", price: 119.90, icon: "🖱️", image: "https://http2.mlstatic.com/D_Q_NP_2X_679475-MLB89107076619_082025-E-mouse-gamer-para-jogo-3200-dpi-optico-com-luzes-led-rgb-usb.webp", rating: 4.6, description: "Sensor óptico de alta precisão com botões configuráveis." },
+    { id: 20, name: "Monitor Full HD 24 Polegadas", category: "Informática", price: 799.90, icon: "🖥️", image: "https://m.media-amazon.com/images/I/71mqDLbvmxL.jpg", rating: 4.7, description: "Painel IPS com tratamento anti-reflexo e bordas finas." }
 ];
 
 let cart = JSON.parse(localStorage.getItem("mercadoMixCart")) || [];
@@ -118,7 +118,7 @@ function renderProducts(list = currentProducts) {
         const card = document.createElement("article");
         card.className = "product-card";
         card.innerHTML = `
-            <div class="product-image" aria-hidden="true">${product.icon}</div>
+            <div class="product-image"><img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend', '<span aria-hidden=&quot;true&quot;>${product.icon}</span>');"></div>
             <div class="product-info">
                 <span class="product-category">${product.category}</span>
                 <h3 class="product-name">${product.name}</h3>
@@ -144,7 +144,7 @@ function openModal(id) {
 
     const modalBody = document.getElementById("modalBody");
     modalBody.innerHTML = `
-        <div style="text-align:center; font-size:4rem;" aria-hidden="true">${product.icon}</div>
+        <div class="modal-product-image"><img src="${product.image}" alt="${product.name}" loading="lazy"></div>
         <h2 id="modalTitle">${product.name}</h2>
         <p><strong>Categoria:</strong> ${product.category}</p>
         <p><strong>Avaliação:</strong> ⭐ ${product.rating} / 5.0</p>
@@ -245,6 +245,7 @@ function renderCart() {
         const cartItem = document.createElement("div");
         cartItem.className = "cart-item";
         cartItem.innerHTML = `
+            <div class="cart-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy"></div>
             <div class="cart-item-title">
                 <strong>${item.name}</strong>
                 <div>${formatPrice(item.price)} un.</div>
